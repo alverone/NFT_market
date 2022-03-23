@@ -24,9 +24,8 @@ class NFTViewCard extends StatelessWidget {
         GestureDetector(
           child: Container(
             alignment: Alignment.centerLeft,
-            constraints: BoxConstraints(
-              maxWidth: 360,
-              minWidth: 326,
+            constraints: const BoxConstraints(
+              maxWidth: 326,
               maxHeight: 415,
             ),
             decoration: BoxDecoration(
@@ -83,16 +82,20 @@ class NFTViewCard extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 2),
-                      Row(
+                      Flex(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        direction: Axis.horizontal,
                         children: [
-                          Text(
-                            view.pieceName,
-                            style: const TextStyle(
-                              color: AppColors.black,
-                              fontSize: 18,
-                              height: 25 / 18,
-                              fontWeight: FontWeight.w700,
+                          Flexible(
+                            child: Text(
+                              view.pieceName,
+                              style: const TextStyle(
+                                color: AppColors.black,
+                                fontSize: 18,
+                                height: 25 / 18,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           const SizedBox(width: 24),

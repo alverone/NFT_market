@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-final imageHeightTween = Tween<double>(
-  begin: 358,
-  end: 275,
-);
-
 final borderRadiusTween = BorderRadiusTween(
   begin: BorderRadius.circular(20),
   end: BorderRadius.circular(0),
@@ -21,8 +16,13 @@ final textOffsetTween = Tween<double>(
 );
 
 final headingSizeTween = Tween<double>(
-  begin: 22,
-  end: 26,
+  begin: 20,
+  end: 22,
+);
+
+final subheadingSizeTween = Tween<double>(
+  begin: 18,
+  end: 16,
 );
 
 final headingHeightTween = Tween<double>(

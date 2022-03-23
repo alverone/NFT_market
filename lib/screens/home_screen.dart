@@ -56,7 +56,7 @@ class _ScreenHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,22 +173,23 @@ class _FeaturedPostsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.none,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
       constraints: const BoxConstraints(
         maxHeight: 473,
         maxWidth: double.infinity,
       ),
       width: MediaQuery.of(context).size.width,
-      //padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+      child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         clipBehavior: Clip.none,
-        itemBuilder: (context, index) => NFTViewCard(view: posts[index]),
-        separatorBuilder: (context, index) => const SizedBox(width: 28),
-        itemCount: posts.length,
+        child: Row(
+          children: <Widget>[
+            const SizedBox(width: 20),
+            for (NFTView post in posts) ...[
+              NFTViewCard(view: post),
+              const SizedBox(width: 28)
+            ]
+          ],
+        ),
       ),
     );
   }

@@ -22,16 +22,8 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  late final PageController _pageController;
-
-  @override
-  void initState() {
-    _pageController = PageController(
-      initialPage: 0,
-    );
-
-    super.initState();
-  }
+  //syncs page indicator and pageview
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   void dispose() {
@@ -55,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             image: DecorationImage(
               alignment: Alignment.topCenter,
               image: AssetImage('assets/images/onboarding_background.png'),
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.fitWidth,
             ),
           ),
           child: Container(

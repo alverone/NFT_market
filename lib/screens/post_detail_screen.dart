@@ -96,6 +96,7 @@ class _AnimationBodyState extends State<_AnimationBody>
   late final Animation<double> iconTopOffset;
   late final Animation<double> textOffset;
   late final Animation<double> headingSize;
+  late final Animation<double> subheadingSize;
   late final Animation<double> headingHeight;
 
   late AnimationController _dragController;
@@ -148,16 +149,16 @@ class _AnimationBodyState extends State<_AnimationBody>
     );
 
     imagePadding = EdgeInsetsTween(
-      begin: EdgeInsets.fromLTRB(28, 0, 28, 50),
+      begin: const EdgeInsets.fromLTRB(28, 0, 28, 50),
       end: const EdgeInsets.all(0),
     ).animate(animation);
 
     //tweens are defined in lib/models/animation_tweens.dart
-    imageHeight = imageHeightTween.animate(animation);
     borderRadius = borderRadiusTween.animate(animation);
     iconTopOffset = iconTopOffsetTween.animate(animation);
     textOffset = textOffsetTween.animate(animation);
     headingSize = headingSizeTween.animate(animation);
+    subheadingSize = subheadingSizeTween.animate(animation);
     headingHeight = headingHeightTween.animate(animation);
     fadeIn = fadeInTween.animate(animation);
     fadeOut = fadeOutTween.animate(animation);
@@ -258,6 +259,7 @@ class _AnimationBodyState extends State<_AnimationBody>
                 fadeOutOpacity: fadeOut.value,
                 headingHeight: headingHeight.value,
                 headingSize: headingSize.value,
+                subheadingSize: subheadingSize.value,
               ),
             ),
           ),
@@ -369,8 +371,8 @@ class _DraggableCardBody extends StatelessWidget {
         children: [
           Container(
             //translate container 390 pixels down
-            transform:
-                Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 290, 0, 1),
+            transform: Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+                290 / 896 * size.height, 0, 1),
             child: GestureDetector(
               onPanDown: (details) => dragController.stop(),
               onPanUpdate: onPanUpdate,
@@ -434,6 +436,7 @@ class _DraggableCardContent extends StatelessWidget {
   double fadeOutOpacity;
   double headingSize;
   double headingHeight;
+  double subheadingSize;
 
   _DraggableCardContent({
     Key? key,
@@ -444,6 +447,7 @@ class _DraggableCardContent extends StatelessWidget {
     required this.fadeOutOpacity,
     required this.headingSize,
     required this.headingHeight,
+    required this.subheadingSize,
   }) : super(key: key);
 
   @override
@@ -489,19 +493,20 @@ class _DraggableCardContent extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Row(
+                    Flex(
+                      direction: Axis.horizontal,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           cardInfo.pieceName,
-                          overflow: TextOverflow.fade,
                           style: TextStyle(
                             fontSize: headingSize,
                             height: headingHeight / headingSize,
                             fontWeight: FontWeight.w800,
                             color: AppColors.black,
                           ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Opacity(
                           opacity: fadeOutOpacity,
@@ -524,20 +529,20 @@ class _DraggableCardContent extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               'On Sale for ',
                               style: TextStyle(
-                                fontSize: 18,
-                                height: 25 / 18,
+                                fontSize: subheadingSize,
+                                height: 25 / subheadingSize,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF8D8D8D),
+                                color: const Color(0xFF8D8D8D),
                               ),
                             ),
                             Text(
                               '${cardInfo.currentPrice.toString()} ETH',
-                              style: const TextStyle(
-                                fontSize: 18,
-                                height: 25 / 18,
+                              style: TextStyle(
+                                fontSize: subheadingSize,
+                                height: 25 / subheadingSize,
                                 fontWeight: FontWeight.w700,
                                 color: AppColors.main,
                               ),
@@ -591,7 +596,8 @@ class _DraggableCardContent extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 4),
-        Row(
+        Flex(
+          direction: Axis.horizontal,
           children: [
             SizedBox(
               width: 180,
@@ -605,15 +611,18 @@ class _DraggableCardContent extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              '@${cardInfo.authorName}',
-              style: const TextStyle(
-                fontSize: 18,
-                height: 25 / 18,
-                color: Color(0xFF767676),
-                fontWeight: FontWeight.w600,
+            Flexible(
+              child: Text(
+                '@${cardInfo.authorName}',
+                style: const TextStyle(
+                  fontSize: 18,
+                  height: 25 / 18,
+                  color: Color(0xFF767676),
+                  fontWeight: FontWeight.w600,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
-            )
+            ),
           ],
         ),
         const SizedBox(height: 39),

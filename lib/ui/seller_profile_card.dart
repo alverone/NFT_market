@@ -19,7 +19,9 @@ class SellerProfileCard extends StatelessWidget {
   String _beautifyPrice(double price) {
     String stringPrice = price.toInt().toString();
     stringPrice = stringPrice.replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => "${m[1]},");
+      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+      (Match m) => "${m[1]},",
+    );
     stringPrice = '\$' + stringPrice;
 
     return stringPrice;
@@ -28,27 +30,33 @@ class SellerProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(10, 10, 28, 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.sellerProfileGrey,
         borderRadius: BorderRadius.circular(14),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  icon,
-                  width: 54,
-                  height: 54,
+      child: Expanded(
+        child: Flex(
+          direction: Axis.horizontal,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                const SizedBox(width: 10),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(14),
+                  child: Image.asset(
+                    icon,
+                    width: 54,
+                    height: 54,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 18),
-              Column(
+              ],
+            ),
+            const SizedBox(width: 18),
+            Expanded(
+              flex: 1,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -59,6 +67,7 @@ class SellerProfileCard extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: AppColors.black,
                     ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -72,10 +81,11 @@ class SellerProfileCard extends StatelessWidget {
                   ),
                 ],
               ),
-            ],
-          ),
-          _FollowButton(name: name),
-        ],
+            ),
+            _FollowButton(name: name),
+            const SizedBox(width: 28),
+          ],
+        ),
       ),
     );
   }
@@ -102,7 +112,7 @@ class _FollowButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 175),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
               child: Text(
                 'Follow',
                 style: TextStyle(

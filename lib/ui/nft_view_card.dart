@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nft_market/screens/screens.dart';
 import 'package:provider/provider.dart';
 
 import '../theme/colors.dart';
@@ -118,8 +117,7 @@ class NFTViewCard extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Provider.of<AppStateManager>(context, listen: false)
-                .changeSelectedPost(view);
+            Provider.of<AppStateManager>(context, listen: false).changeSelectedPost(view);
           },
         ),
         _CardButtonsContainer(id: view.id),
@@ -226,9 +224,7 @@ class _LikeButton extends StatelessWidget {
                 constraints: const BoxConstraints.expand(),
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
-                  isLiked
-                      ? 'assets/images/heart.svg'
-                      : 'assets/images/heart_filled.svg',
+                  isLiked ? 'assets/images/heart.svg' : 'assets/images/heart_filled.svg',
                   color: isLiked ? Colors.white : const Color(0xFF8D8D8D),
                   width: 22,
                   height: 22,

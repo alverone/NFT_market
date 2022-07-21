@@ -17,14 +17,11 @@ class SellerProfileCard extends StatelessWidget {
   }) : super(key: key);
 
   String _beautifyPrice(double price) {
-    String stringPrice = price.toInt().toString();
-    stringPrice = stringPrice.replaceAllMapped(
-      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-      (Match m) => "${m[1]},",
-    );
-    stringPrice = '\$' + stringPrice;
-
-    return stringPrice;
+    return '\$' +
+        price.toInt().toString().replaceAllMapped(
+              RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+              (Match m) => "${m[1]},",
+            );
   }
 
   @override
@@ -35,6 +32,7 @@ class SellerProfileCard extends StatelessWidget {
         color: AppColors.sellerProfileGrey,
         borderRadius: BorderRadius.circular(14),
       ),
+      height: 66,
       child: Expanded(
         child: Flex(
           direction: Axis.horizontal,
@@ -55,7 +53,6 @@ class SellerProfileCard extends StatelessWidget {
             ),
             const SizedBox(width: 18),
             Expanded(
-              flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -90,7 +90,7 @@ class _ScreenHeading extends StatelessWidget {
                 imageSrc: "assets/images/search.svg",
                 border: true,
               ),
-              SizedBox(width: 15),
+              SizedBox(width: 8),
               AppIconButton(
                 imageSrc: "assets/images/notification.svg",
                 border: true,
@@ -186,7 +186,7 @@ class _FeaturedPostsList extends StatelessWidget {
             const SizedBox(width: 20),
             for (NFTView post in posts) ...[
               NFTViewCard(view: post),
-              const SizedBox(width: 28)
+              const SizedBox(width: 28),
             ]
           ],
         ),

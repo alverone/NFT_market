@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/services.dart';
+import 'package:nft_market/gen/assets.gen.dart';
 
 import '../theme/colors.dart';
 import '../ui/ui.dart';
@@ -71,8 +71,7 @@ class _ScreenHeading extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   color: AppColors.main,
                 ),
-                child: SvgPicture.asset(
-                  "assets/images/cryptocurrency.svg",
+                child: Assets.svg.cryptocurrency.svg(
                   width: 9.29,
                   height: 15.75,
                 ),
@@ -85,14 +84,14 @@ class _ScreenHeading extends StatelessWidget {
             ],
           ),
           Row(
-            children: const [
+            children: [
               AppIconButton(
-                imageSrc: "assets/images/search.svg",
+                imageSrc: Assets.svg.search.path,
                 border: true,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               AppIconButton(
-                imageSrc: "assets/images/notification.svg",
+                imageSrc: Assets.svg.notification.path,
                 border: true,
               ),
             ],

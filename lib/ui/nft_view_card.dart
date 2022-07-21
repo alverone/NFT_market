@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nft_market/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
 
 import '../theme/colors.dart';
@@ -223,12 +223,17 @@ class _LikeButton extends StatelessWidget {
               child: Container(
                 constraints: const BoxConstraints.expand(),
                 alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  isLiked ? 'assets/images/heart.svg' : 'assets/images/heart_filled.svg',
-                  color: isLiked ? Colors.white : const Color(0xFF8D8D8D),
-                  width: 22,
-                  height: 22,
-                ),
+                child: isLiked
+                    ? Assets.svg.heart.svg(
+                        width: 22,
+                        height: 22,
+                        color: isLiked ? Colors.white : const Color(0xFF8D8D8D),
+                      )
+                    : Assets.svg.heartFilled.svg(
+                        width: 22,
+                        height: 22,
+                        color: isLiked ? Colors.white : const Color(0xFF8D8D8D),
+                      ),
               ),
             ),
           ),

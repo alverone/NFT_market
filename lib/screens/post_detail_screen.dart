@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nft_market/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/physics.dart';
 import 'dart:ui';
 
@@ -31,8 +31,7 @@ class PostDetailScreen extends StatefulWidget {
   State<PostDetailScreen> createState() => _PostDetailScreenState();
 }
 
-class _PostDetailScreenState extends State<PostDetailScreen>
-    with TickerProviderStateMixin {
+class _PostDetailScreenState extends State<PostDetailScreen> with TickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -85,8 +84,7 @@ class _AnimationBody extends StatefulWidget {
   State<_AnimationBody> createState() => _AnimationBodyState();
 }
 
-class _AnimationBodyState extends State<_AnimationBody>
-    with SingleTickerProviderStateMixin {
+class _AnimationBodyState extends State<_AnimationBody> with SingleTickerProviderStateMixin {
   //animations
   late final Animation<double> fadeIn;
   late final Animation<double> fadeOut;
@@ -371,8 +369,7 @@ class _DraggableCardBody extends StatelessWidget {
         children: [
           Container(
             //translate container 390 pixels down
-            transform: Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
-                290 / 896 * size.height, 0, 1),
+            transform: Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 290 / 896 * size.height, 0, 1),
             child: GestureDetector(
               onPanDown: (details) => dragController.stop(),
               onPanUpdate: onPanUpdate,
@@ -676,7 +673,7 @@ class _DraggableCardButtons extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               AppIconButton(
-                imageSrc: 'assets/images/message.svg',
+                imageSrc: Assets.svg.message.path,
                 backgroundColor: AppColors.black,
                 onTap: () {},
               ),
@@ -710,7 +707,7 @@ class _TopButtons extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AppIconButton(
-              imageSrc: 'assets/images/logout.svg',
+              imageSrc: Assets.svg.logout.path,
               onTap: () => Navigator.pop(context),
               backgroundColor: Colors.white,
             ),
@@ -724,7 +721,7 @@ class _TopButtons extends StatelessWidget {
                   ),
                   const SizedBox(width: 15),
                   AppIconButton(
-                    imageSrc: 'assets/images/more.svg',
+                    imageSrc: Assets.svg.more.path,
                     onTap: () {},
                     backgroundColor: Colors.white,
                   ),
@@ -887,14 +884,17 @@ class _LikeButton extends StatelessWidget {
               child: Container(
                 constraints: const BoxConstraints.expand(),
                 alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  dark
-                      ? 'assets/images/heart_filled.svg'
-                      : 'assets/images/heart.svg',
-                  color: isLiked ? Colors.white : AppColors.black,
-                  width: 22,
-                  height: 22,
-                ),
+                child: dark
+                    ? Assets.svg.heartFilled.svg(
+                        width: 22,
+                        height: 22,
+                        color: isLiked ? Colors.white : AppColors.black,
+                      )
+                    : Assets.svg.heart.svg(
+                        width: 22,
+                        height: 22,
+                        color: isLiked ? Colors.white : AppColors.black,
+                      ),
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nft_market/gen/assets.gen.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -43,10 +44,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomCenter,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               alignment: Alignment.topCenter,
-              image: AssetImage('assets/images/onboarding_background.png'),
+              image: AssetImage(Assets.png.onboardingBackground.path),
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -189,8 +190,7 @@ class _BottomButton extends StatelessWidget {
           splashColor: Colors.white10,
           highlightColor: Colors.white10,
           onTap: () {
-            Provider.of<AppStateManager>(context, listen: false)
-                .completeOnboarding();
+            Provider.of<AppStateManager>(context, listen: false).completeOnboarding();
           },
         ),
       ),

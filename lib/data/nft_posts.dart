@@ -1,8 +1,10 @@
+import 'package:nft_market/gen/assets.gen.dart';
+
 import '../models/models.dart';
 
-const List<NFTView> posts = <NFTView>[
+List<NFTView> posts = <NFTView>[
   NFTView(
-    imageSrc: 'assets/images/sample.png',
+    imageSrc: Assets.png.sample.path,
     authorName: 'MekaVerse',
     currentPrice: 10,
     pieceName: 'Meka #3139',
@@ -10,11 +12,11 @@ const List<NFTView> posts = <NFTView>[
     description: 'NFT Post',
     token: "0x9a53..ca8a",
     username: 'MekaVerse',
-    authorIcon: 'assets/images/mekaverse.png',
+    authorIcon: Assets.png.mekaverse.path,
     highestBid: 0.0005,
   ),
   NFTView(
-    imageSrc: 'assets/images/monsters.png',
+    imageSrc: Assets.png.monsters.path,
     authorName: 'Monster',
     currentPrice: 1.2,
     pieceName: 'Monsters',
@@ -22,11 +24,11 @@ const List<NFTView> posts = <NFTView>[
     description: 'NFT Post',
     token: "0x9a53..ca8b",
     username: 'monsters',
-    authorIcon: 'assets/images/monsters.png',
+    authorIcon: Assets.png.monsters.path,
     highestBid: 0.0005,
   ),
   NFTView(
-    imageSrc: 'assets/images/cryptocorgi.png',
+    imageSrc: Assets.png.cryptocorgi.path,
     authorName: 'Crypto Corgies',
     currentPrice: 0.12,
     pieceName: 'Corgi #960',
@@ -34,11 +36,11 @@ const List<NFTView> posts = <NFTView>[
     description: 'NFT Post',
     token: "0x9a53..ca8c",
     username: 'CRYPTOCORGIS',
-    authorIcon: 'assets/images/cryptocorgis.png',
+    authorIcon: Assets.png.cryptocorgis.path,
     highestBid: 0.0005,
   ),
   NFTView(
-    imageSrc: 'assets/images/candyhunter.png',
+    imageSrc: Assets.png.candyhunter.path,
     authorName: 'Candy Hunters',
     currentPrice: 0.05,
     pieceName: 'Hunter #4402',
@@ -46,11 +48,11 @@ const List<NFTView> posts = <NFTView>[
     description: 'NFT Post',
     token: "0x9a53..ca8d",
     username: 'CandyHunters',
-    authorIcon: 'assets/images/candyhunter.png',
+    authorIcon: Assets.png.candyhunter.path,
     highestBid: 0.0005,
   ),
   NFTView(
-    imageSrc: 'assets/images/shiba.png',
+    imageSrc: Assets.png.shiba.path,
     authorName: 'THE SHIBOSHIS',
     currentPrice: 1.31,
     pieceName: '#1036',
@@ -58,7 +60,7 @@ const List<NFTView> posts = <NFTView>[
     description: 'NFT Post',
     token: "0x9a53..ca8f",
     username: 'theshiboshis',
-    authorIcon: 'assets/images/theshiboshis.jpeg',
+    authorIcon: Assets.jpg.theshiboshis.path,
     highestBid: 0.0005,
   ),
 ];
